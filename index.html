@@ -1,104 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="styles.css">
-<style>
-    *{
-        padding: 0;
-        margin: 0;
-        text-decoration: none;
-        list-style: none;
-    }
-    .navbar {
-        background-color: #333;
-        color: #fff;
-        padding: 10px 0;
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <style>
+    * {
+        box-sizing: border-box;
       }
       
-      .container {
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      
+      header {
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        background-color: #f1f1f1;
       }
       
       .logo {
-        font-size: 1.5em;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      
+      nav {
+        display: flex;
+        align-items: center;
       }
       
       .nav-links {
-        display: flex;
         list-style: none;
+        display: flex;
       }
       
       .nav-links li {
         margin-right: 20px;
       }
-       
-      .nav-links li a {
-        color: #fff;
-      }
-      .menu-icon {
-        display: none;
+      
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
       }
       
-      @media screen and (max-width: 800px) {
+      .date {
+        font-size: 14px;
+        margin-right: auto;
+      }
+      
+      .search-icon {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+      
+      .menu-icon {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+      
+      .menu-icon__line {
+        width: 25px;
+        height: 3px;
+        background-color: #333;
+        margin-bottom: 5px;
+      }
+      
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: 100%;
+        background-color: #f1f1f1;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in;
+      }
+      
+      .sidebar--open {
+        transform: translateX(0);
+      }
+      
+      .sidebar-links {
+        padding: 20px;
+      }
+      
+      .sidebar-links li {
+        margin-bottom: 10px;
+      }
+      
+      .sidebar-links a {
+        text-decoration: none;
+        color: #333;
+      }
+      
+      @media screen and (max-width: 768px) {
         .nav-links {
           display: none;
         }
       
         .menu-icon {
-          display: block;
-        }
-      
-        .menu-open .nav-links {
           display: flex;
-          flex-direction: column;
-          align-items: center;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          background-color: #333;
-          width: 100%;
-          padding: 10px 0;
-        }
-      
-        .menu-open .nav-links li {
-          margin-right: 0;
         }
       }
-      
-</style>
-<title>Responsive Navigation</title>
+  </style>
 </head>
 <body>
-
-<nav class="navbar">
-  <div class="container">
+  <header>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">À propos</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="date">Date actuelle</div>
+    <div class="search-icon">Icône de recherche</div>
     <div class="menu-icon">
-        <button onclick="toggleMenu()">&#9776;</button>
-      </div>
-    <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
+      <span class="menu-icon__line"></span>
+      <span class="menu-icon__line"></span>
+      <span class="menu-icon__line"></span>
+    </div>
+  </header>
+
+  <div class="sidebar">
+    <ul class="sidebar-links">
+      <li><a href="#">Accueil</a></li>
+      <li><a href="#">À propos</a></li>
       <li><a href="#">Services</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
-    
   </div>
-</nav>
 
-<div class="content">
-  <!-- Your page content here -->
-</div>
+  <script src="script.js"></script>
+  <script>
+    const menuIcon = document.querySelector('.menu-icon');
+const sidebar = document.querySelector('.sidebar');
 
-<script src="script.js"></script>
-<script>
-    function toggleMenu() {
-        const navLinks = document.querySelector('.nav-links');
-        navLinks.classList.toggle('menu-open');
-      }
-</script>
+menuIcon.addEventListener('click', () => {
+  sidebar.classList.toggle('sidebar--open');
+});
+  </script>
 </body>
 </html>
