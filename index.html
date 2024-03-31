@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar Responsive</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+      
+      .navbar {
+        background-color: #333;
+        color: #fff;
+        padding: 20px 0;
+      }
+      
+      .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .logo {
+        font-size: 24px;
+        color: #fff;
+        text-decoration: none;
+      }
+      
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+      
+      .nav-links li {
+        margin-right: 20px;
+      }
+      
+      .nav-links li a {
+        color: #fff;
+        text-decoration: none;
+      }
+      
+      .burger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+      
+      .line1, .line2, .line3 {
+        width: 25px;
+        height: 3px;
+        background-color: #fff;
+        margin: 3px;
+      }
+      
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">Logo</a>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </div>
+  </nav>
+  <script src="script.js"></script>
+  <script>
+    const burger = document.querySelector('.burger');
+const navLinks = document.querySelector('.nav-links');
+
+burger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+
+  </script>
+</body>
+</html>
