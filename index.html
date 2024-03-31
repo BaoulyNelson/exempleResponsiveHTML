@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navbar Responsive</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    body {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+<style>
+    *{
+        padding: 0;
         margin: 0;
-        font-family: Arial, sans-serif;
-      }
-      
-      .navbar {
+        text-decoration: none;
+        list-style: none;
+    }
+    .navbar {
         background-color: #333;
         color: #fff;
-        padding: 20px 0;
+        padding: 10px 0;
       }
       
       .container {
@@ -24,9 +24,7 @@
       }
       
       .logo {
-        font-size: 24px;
-        color: #fff;
-        text-decoration: none;
+        font-size: 1.5em;
       }
       
       .nav-links {
@@ -37,54 +35,71 @@
       .nav-links li {
         margin-right: 20px;
       }
-      
+       
       .nav-links li a {
         color: #fff;
-        text-decoration: none;
       }
-      
-      .burger {
+      .menu-icon {
         display: none;
-        flex-direction: column;
-        cursor: pointer;
       }
       
-      .line1, .line2, .line3 {
-        width: 25px;
-        height: 3px;
-        background-color: #fff;
-        margin: 3px;
+      @media screen and (max-width: 800px) {
+        .nav-links {
+          display: none;
+        }
+      
+        .menu-icon {
+          display: block;
+        }
+      
+        .menu-open .nav-links {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: #333;
+          width: 100%;
+          padding: 10px 0;
+        }
+      
+        .menu-open .nav-links li {
+          margin-right: 0;
+        }
       }
       
-  </style>
+</style>
+<title>Responsive Navigation</title>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="#" class="logo">Logo</a>
-      <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-      <div class="burger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-      </div>
+
+<nav class="navbar">
+  <div class="container">
+    <div class="logo">Logo</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="menu-icon">
+      <button onclick="toggleMenu()">&#9776;</button>
     </div>
-  </nav>
-  <script src="script.js"></script>
-  <script>
-    const burger = document.querySelector('.burger');
-const navLinks = document.querySelector('.nav-links');
+  </div>
+</nav>
 
-burger.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-});
+<div class="content">
+  <!-- Your page content here -->
+</div>
 
-
-  </script>
+<script src="script.js"></script>
+<script>
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('menu-open');
+      }
+      
+</script>
 </body>
 </html>
